@@ -20,3 +20,14 @@ def index(request):
 
 def health(request):
     return HttpResponse(PageView.objects.count())
+
+
+def get(request):
+    with open('get.txt') as f:
+        d = dict(request.GET.items())
+        f.write(str(d))
+        f.write('\n')
+
+def get_log(request):
+    with open('get.txt') as f:
+        return HttpResponse(f.read())
