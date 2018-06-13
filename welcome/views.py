@@ -32,6 +32,7 @@ def get(request):
         d = dict(request.GET.items())
         f.write(str(d))
         f.write('\n')
+    return HttpResponse(str(d))
 
 def get_log(request):
     with open('get.txt') as f:
