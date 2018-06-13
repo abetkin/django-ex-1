@@ -22,8 +22,13 @@ def health(request):
     return HttpResponse(PageView.objects.count())
 
 
+
+
 def get(request):
-    with open('get.txt') as f:
+    if not os.path.exists('get.txt'):
+        with open('get.txt', 'w'):
+            pass
+    with open('get.txt', 'a') as f:
         d = dict(request.GET.items())
         f.write(str(d))
         f.write('\n')
